@@ -73,6 +73,15 @@ Download http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.0
     sudo systemctl restart tomcat8
     sudo systemctl restart guacd
 
-By now, pointing browser to http://localhost:8080/guacamole should give you a login screen.
+By now, pointing browser to http://localhost:8080/guacamole should give you a login screen. Next we need to 
+configure Guacamole.
 
+## Cnnfiguring Guacamole
+
+The configuration file is located at /etc/guacamole/guacamole.properties.
+``` file /etc/guacamole/guacamole.properties
+# Hostname and port of guacamole proxy
+guacd-hostname: localhost
+guacd-port:     4822
+```
 
