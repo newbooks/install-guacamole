@@ -76,12 +76,66 @@ Download http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.0
 By now, pointing browser to http://localhost:8080/guacamole should give you a login screen. Next we need to 
 configure Guacamole.
 
-## Cnnfiguring Guacamole
+## Configuring Guacamole
+    
+    sudo mkdir /etc/guacamole/{extensions,lib}
+    sudo -i
+    echo "GUACAMOLE_HOME=/etc/guacamole" >> /etc/default/tomcat8
+    exit
+
 
 The configuration file is located at /etc/guacamole/guacamole.properties.
-``` file /etc/guacamole/guacamole.properties
+``` /etc/guacamole/guacamole.properties
 # Hostname and port of guacamole proxy
 guacd-hostname: localhost
 guacd-port:     4822
+user-mapping:    /etc/guacamole/user-mapping.xml
+auth-provider:    net.sourceforge.guacamole.net.basic.BasicFileAuthenticationProvider
 ```
 
+Save the configuration to Tomcat servlet:
+    
+    ln -s /etc/guacamole /usr/share/tomcat8/.guacamol
+
+## Setting default authentication
+This sample file /etc/guacamole/user-mapping.xml uses plain password.
+
+
+```
+<user-mapping>
+	
+    <!-- Per-user authentication and config information -->
+    <authorize username="USERNAME" password="PASSWORD">
+
+        <!-- First authorized connection -->
+        <connection name="localhost">
+            <protocol>vnc</protocol>
+            <param name="hostname">localhost</param>
+            <param name="port">5901</param>
+            <param name="password">VNCPASS</param>
+        </connection>
+
+        <!-- Second authorized connection -->
+        <connection name="otherhost">
+            <protocol>vnc</protocol>
+            <param name="hostname">otherhost</param>
+            <param name="port">5900</param>
+            <param name="password">VNCPASS</param>
+        </connection>
+
+    </authorize>
+
+</user-mapping>
+```
+
+   
+## Adding client machines
+
+Full documentation can be found at:
+https://guacamole.apache.org/doc/gug/configuring-guacamole.html#connection-configuration
+
+Supported protocols are:
+
+1. ssh
+2. vnc
+3. rdp
