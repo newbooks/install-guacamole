@@ -128,6 +128,15 @@ This sample file /etc/guacamole/user-mapping.xml uses plain password.
 </user-mapping>
 ```
 
+## Change the guacamole url to root
+By default, the url is http://localhost:8080/guacamole. If you would like to change this to other form, or even root, you can do this:
+
+This is an example to set root url http://localhost:8080 to guacamole:
+
+  cd /var/lib/tomcat8/webapps.
+  sudo mv ROOT ROOT.bak
+  sudo ln -s guacamole ROOT 
+  sudo ln -s guacamole.war ROOT.war
    
 ## Adding client machines
 
