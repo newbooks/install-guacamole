@@ -127,6 +127,11 @@ This sample file /etc/guacamole/user-mapping.xml uses plain password.
 
 </user-mapping>
 ```
+Since this file contains password, secure this password to be read only by root and root group:
+```
+sudo chmod 640  /etc/guacamole/user-mapping.xml
+```
+
 
 ## Change the guacamole url to root
 By default, the url is http://localhost:8080/guacamole. If you would like to change this to other form, or even root, you can do this:
