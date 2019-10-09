@@ -129,6 +129,7 @@ This sample file /etc/guacamole/user-mapping.xml uses plain password.
 ```
 Since this file contains password, secure this password to be read only by root and root group:
 ```
+sudo chown tomcat8 /etc/guacamole/user-mapping.xml
 sudo chmod 640  /etc/guacamole/user-mapping.xml
 ```
 
