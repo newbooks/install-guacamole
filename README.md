@@ -155,3 +155,6 @@ Supported protocols are:
 1. ssh
 2. vnc
 3. rdp
+
+It is easier to setup xRDP than VNC on Ubuntu server.
+https://medium.com/@vivekteega/how-to-setup-an-xrdp-server-on-ubuntu-18-04-89f7e205bd4e
