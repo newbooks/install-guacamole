@@ -157,4 +157,12 @@ Supported protocols are:
 3. rdp
 
 It is easier to setup xRDP than VNC on Ubuntu server.
+
 https://medium.com/@vivekteega/how-to-setup-an-xrdp-server-on-ubuntu-18-04-89f7e205bd4e
+
+On Linux Mint 19.2, if xrdp fails to start and there is no /etc/X11/xrdp directory, try this:
+```
+  sudo apt install xserver-xorg-core
+  sudo apt install xorgxrdp
+  sudo systemctl restart xrdp
+```
